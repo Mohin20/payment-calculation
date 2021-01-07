@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .form{
+                width: 60%;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: lightgray;
+                border: 2px solid yellow;
+                text-align: center;
+                font-size: 20px;
+                margin-top: 60px;
+            }
+
+            .btn{
+                background-color: rgb(184, 213, 223);
+                width: 45px;
+                height: 45px;
+                border: 2px solid green;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            #i2{
+                background-color: blue;
+                color: red;
+            }
+
+            #p1{
+                background-color: blue;
+                color: red;
+            }
+
+            #month{
+                border: 2px solid blue;
+                font-weight: bold;
+                padding: 5px;
+            }
+
+            .graph{
+                text-align: center; 
+                margin-top: 30px;
+            }
+
+            .g1{
+                display: inline-block;
+            }
+
+            .g{
+                display: inline-block; 
+                margin-left: 20px;
+            }
+
+            .bar{
+                width: 50px;
+                background-color: lightyellow;
+                cursor: pointer;
+            }
+
+            .up{
+                margin-bottom: 0px;
+                font-size: 15px;
+            }
+
+            .down{
+                margin-top: 0px;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="form">
+            <h1>Calculate Basic Car Installments</h1>
+            <label for="price">Car Price : </label>
+            <input type="text" id="price" value="2250000">
+            <br>
+            <br>
+            <label for="interest">Interest Rate : </label>
+            <button class="btn" id="i1" onclick="changeInterest(1)">0%</button>
+            <button class="btn" id="i2" onclick="changeInterest(2)">4%</button>
+            <button class="btn" id="i3" onclick="changeInterest(3)">5%</button>
+            <br>
+            <br>
+            <label for="payment">Down Payment : </label>
+            <input type="text" id="payment">
+            <br>
+            <br>
+            <label for="Installments">Installments Period (months) : </label>
+            <button class="btn" id="p1" onclick="changePeriod(1)">72</button>
+            <button class="btn" id="p2" onclick="changePeriod(2)">60</button>
+            <button class="btn" id="p3" onclick="changePeriod(3)">48</button>
+            <button class="btn" id="p4" onclick="changePeriod(4)">36</button>
+            <button class="btn" id="p5" onclick="changePeriod(5)">24</button>
+            <button class="btn" id="p6" onclick="changePeriod(6)">12</button>
+            <br>
+            <br>
+            <label for="month">Installment per Month : </label>
+            <span id="month"><span id="monthly"></span> (<span id="months"></span> Months)</span>
+            <div class="graph">
+                <div class="g1">
+                    <p class="up">72</p>
+                    <div style="height: 15px; background-color: yellow;" class="bar" onclick="changePeriod(1)"></div>
+                    <p class="down">72</p>
+                </div>
+                <div class="g">
+                    <p class="up">72</p>
+                    <div style="height: 25px;" class="bar" onclick="changePeriod(2)"></div>
+                    <p class="down">60</p>
+                </div>
+                <div class="g">
+                    <p class="up">72</p>
+                    <div style="height: 35px;" class="bar" onclick="changePeriod(3)"></div>
+                    <p class="down">48</p>
+                </div>
+                <div class="g">
+                    <p class="up">72</p>
+                    <div style="height: 55px;" class="bar" onclick="changePeriod(4)"></div>
+                    <p class="down">36</p>
+                </div>
+                <div class="g">
+                    <p class="up">72</p>
+                    <div style="height: 75px;" class="bar" onclick="changePeriod(5)"></div>
+                    <p class="down">24</p>
+                </div>
+                <div class="g">
+                    <p class="up">72</p>
+                    <div style="height: 130px;" class="bar" onclick="changePeriod(6)"></div>
+                    <p class="down">12</p>
+                </div>
+                <p>Installment Period (Months)</p>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script>
+            window.addEventListener('load', 
+            function() {
+                var price = Number(localStorage.getItem("price"));
+                calculateInterest(price,4,72)
+            }, false);
+
+            var selectedM = 72;
+            var selectedI = 4;
+
+            function changeInterest(index){
+                document.getElementById("i1").style.backgroundColor = "rgb(184, 213, 223)";
+                document.getElementById("i1").style.color = "black";
+                document.getElementById("i2").style.backgroundColor = "rgb(184, 213, 223)";
+                document.getElementById("i2").style.color = "black";
+                document.getElementById("i3").style.backgroundColor = "rgb(184, 213, 223)";
+                document.getElementById("i3").style.color = "black";
+                if(index == 1){
+                    document.getElementById("i1").style.backgroundColor = "blue";
+                    document.getElementById("i1").style.color = "red";
+                    selectedI = 0;
+                }
+                else if(index == 2){
+                    document.getElementById("i2").style.backgroundColor = "blue";
+                    document.getElementById("i2").style.color = "red";
+                    selectedI = 4;
+                }
+                else if(index == 3){
+                    document.getElementById("i3").style.backgroundColor = "blue";
+                    document.getElementById("i3").style.color = "red";
+                    selectedI = 5;
+                }
+                calculateInterest(document.getElementById("price").value,selectedI,selectedM);
+            }
+
+            function changePeriod(index){
+                document.getElementById("p1").style.backgroundColor = "rgb(184, 213, 223)";
+                document.getElementById("p1").style.color = "black";
+                document.getElementById("p2").style.backgroundColor = "rgb(184, 213, 223)";
+                document.getElementById("p2").style.color = "black";
+                document.getElementById("p3").style.backgroundColor = "rgb(184, 213, 223)";
+                document.getElementById("p3").style.color = "black";
+                document.getElementById("p4").style.backgroundColor = "rgb(184, 213, 223)";
+                document.getElementById("p4").style.color = "black";
+                document.getElementById("p5").style.backgroundColor = "rgb(184, 213, 223)";
+                document.getElementById("p5").style.color = "black";
+                document.getElementById("p6").style.backgroundColor = "rgb(184, 213, 223)";
+                document.getElementById("p6").style.color = "black";
+                let bars1 = document.getElementsByClassName("bar");
+                for(let i=0;i<bars1.length;i++){
+                    bars1[i].style.backgroundColor = "lightyellow";
+                }
+                if(index == 1){
+                    document.getElementById("p1").style.backgroundColor = "blue";
+                    document.getElementById("p1").style.color = "red";
+                    bars1[0].style.backgroundColor = "yellow";
+                    selectedM = 72;
+                }
+                else if(index == 2){
+                    document.getElementById("p2").style.backgroundColor = "blue";
+                    document.getElementById("p2").style.color = "red";
+                    bars1[1].style.backgroundColor = "yellow";
+                    selectedM = 60;
+                }
+                else if(index == 3){
+                    document.getElementById("p3").style.backgroundColor = "blue";
+                    document.getElementById("p3").style.color = "red";
+                    bars1[2].style.backgroundColor = "yellow";
+                    selectedM = 48;
+                }
+                else if(index == 4){
+                    document.getElementById("p4").style.backgroundColor = "blue";
+                    document.getElementById("p4").style.color = "red";
+                    bars1[3].style.backgroundColor = "yellow";
+                    selectedM = 36;
+                }
+                else if(index == 5){
+                    document.getElementById("p5").style.backgroundColor = "blue";
+                    document.getElementById("p5").style.color = "red";
+                    bars1[4].style.backgroundColor = "yellow";
+                    selectedM = 24;
+                }
+                else if(index == 6){
+                    document.getElementById("p6").style.backgroundColor = "blue";
+                    document.getElementById("p6").style.color = "red";
+                    bars1[5].style.backgroundColor = "yellow";
+                    selectedM = 12;
+                }
+                calculateInterest(document.getElementById("price").value,selectedI,selectedM);
+            }
+
+            function calculateInterest(price,interestRate,selectedMonths){
+                var downPayment = price * 0.10;
+                document.getElementById("price").value = price;
+                price = price - downPayment;
+                document.getElementById("payment").value = downPayment; 
+                var monthlyInterest = ((price * (Number(interestRate)/100))/12).toFixed(2);
+                var installmentPerMonth = (price / Number(selectedMonths)) + Number(monthlyInterest);
+                document.getElementById("monthly").innerHTML = installmentPerMonth;
+                document.getElementById("months").innerHTML = selectedMonths;
+                var bars = document.getElementsByClassName("up");
+                bars[0].innerHTML = ((price / 72) + Number(monthlyInterest)).toFixed(0);
+                bars[1].innerHTML = ((price / 60) + Number(monthlyInterest)).toFixed(0);
+                bars[2].innerHTML = ((price / 48) + Number(monthlyInterest)).toFixed(0);
+                bars[3].innerHTML = ((price / 36) + Number(monthlyInterest)).toFixed(0);
+                bars[4].innerHTML = ((price / 24) + Number(monthlyInterest)).toFixed(0);
+                bars[5].innerHTML = ((price / 12) + Number(monthlyInterest)).toFixed(0);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    footer {
+      background-color: #8a9c51;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron">
+    <div class="container text-center">
+        <h1>LEGENDARY MOTOR CUBE</h1>
+        <p>* DEALING THE BEST SUV'S EVER CRAFTED *</p>
+        <img src="img.jpg" width="500" height="300">
+    </div>
+</div>
+
+ 
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">RANGE ROVER SPORT 2020</div>
+            <div class="panel-body">
+                <img src="range.jpg" class="img-responsive" style="width:100%" alt="Image">
+            </div>
+            <div class="panel-footer">5,990,000.00 Baht</div>
+            <a href="form.html">
+              <button onclick="store(1)">CALCULATE INTREST</button>
+          </a>
+        </div>
+        </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-danger">
+        <div class="panel-heading">LAND CRUISER PRADO 2020</div>
+        <div class="panel-body"><img src="parado.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">7,200,000.00 Bhat</div>
+        <a href="form.html">
+            <button onclick="store(2)">CALCULATE INTREST</button>
+        </a>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+        <div class="panel panel-success">
+            <div class="panel-heading">ROLLS ROYCE CULLINAN</div>
+            <div class="panel-body"><img src="rolls.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+            <div class="panel-footer">32,900,000.00 Bhat</div>
+            <a href="form.html">
+                <button onclick="store(3)">CALCULATE INTREST</button>
+            </a>
+        </div>
+    </div>
+  </div>
+</div><br>
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">LAMBORGHINI URUS </div>
+            <div class="panel-body"><img src="urus.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+            <div class="panel-footer">23,420,000.00 Bhat</div>
+            <a href="form.html">
+                <button onclick="store(4)">CALCULATE INTREST</button>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-4"> 
+        <div class="panel panel-primary">
+            <div class="panel-heading">MERCEDES G-WAGON AMG</div>
+            <div class="panel-body"><img src="wagon.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+            <div class="panel-footer">9,490,000.00 Bhat </div>
+            <a href="form.html">
+                <button onclick="store(5)">CALCULATE INTREST</button>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-4"> 
+        <div class="panel panel-primary">
+            <div class="panel-heading">BMW X6 </div>
+            <div class="panel-body"><img src="x6.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+            <div class="panel-footer">7,250,000.00 Bhat</div>
+            <a href="form.html">
+                <button onclick="store(6)">CALCULATE INTREST</button>
+            </a>
+        </div>
+    </div>
+  </div>
+</div><br><br>
+
+<footer class="container-fluid text-center">
+  <p>Online Store Copyright</p>  
+  <form class="form-inline">Get deals:
+    <input type="email" class="form-control" size="50" placeholder="Email Address">
+    <button type="button" class="btn btn-danger">Sign Up</button>
+  </form>
+</footer>
+
+
+
+  <script>
+    function store(index){
+      var price = 0;
+      if(index == 1){
+        price = 5990000;
+      }
+      else if(index == 2){
+        price = 7200000;
+      }
+      else if(index == 3){
+        price = 32900000;
+      }
+      else if(index == 4){
+        price = 23420000;
+      }
+      else if(index == 5){
+        price = 9490000;
+      }
+      else if(index == 6){
+        price = 7250000;
+      }
+      localStorage.setItem("price",price);
+    }
+  </script>
+</body>
+</html>
